@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.chatappexample.viewmodel.MainViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.ChattingFragment">
+
+        <EditText
+            android:id="@+id/my_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="내 id"
+            android:text="@={viewModel.name}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/target_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.target}"
+            android:layout_marginTop="16dp"
+            android:hint="상대 id"
+            app:layout_constraintEnd_toEndOf="@+id/my_name"
+            app:layout_constraintStart_toStartOf="@+id/my_name"
+            app:layout_constraintTop_toBottomOf="@+id/my_name" />
+
+        <Button
+            android:id="@+id/joinRoomBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.joinRoom()}"
+            android:text="방입장"
+            app:layout_constraintEnd_toEndOf="@+id/target_name"
+            app:layout_constraintTop_toBottomOf="@+id/target_name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
